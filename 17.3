@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main(void)
+{
+	int dlinaK, dlinaPos = 0;
+	int znacK, znacPos = 0;
+	int inK, indexPos = 0;
+	int a, k, i , max;
+	cin >> a;
+	int* ty, * yu;
+	ty = new int[a];
+	yu = new int[a];
+
+	for (int i = 0; i < a; i++) {
+		cout << i << ": ";
+		cin >> ty[i];
+	}
+	for (int i = 0; i < a; i++) 
+	{
+		cout << ty[i] << "\t";
+	}
+	int m, b, z, x, c;
+	cout << endl;
+	cin >> max;
+	m = 1;
+	b = 0;
+	z = (max == 1 ? 1 : 0);
+	x = -1;
+	for (i = 1; i < a; i++) 
+	{
+		if (ty[i - 1] != ty[i]) 
+		{
+			m++;
+			if (m == max)
+			{
+				b = i;
+			}
+			c = i;
+		}
+		if (m == max) z++;
+	}
+	for (i = 0; i < b; i++)
+	{
+		yu[++x] = ty[i];
+	}
+
+	for (i = c; i < a; i++)
+	{
+		yu[++x] = ty[i];
+	}
+
+	for (i = b + z; i < c; i++)
+	{
+		yu[++x] = ty[i];
+	}
+
+	for (i = b; i < b + z; i++)
+	{
+		yu[++x] = ty[i];
+	}
+
+	for (i = 0; i < a; i++)
+	{
+		ty[i] = yu[i];
+	}
+	cout << endl;
+	for (i = 0; i < a; i++)
+	{
+		cout << i + 1 << ": " << ty[i] << endl;
+	}
+
+}
